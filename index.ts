@@ -12,7 +12,7 @@ const AI = new OpenAI({
 function prompt(topic: string) {
   const system: ChatCompletionMessageParam = {
     role: "system",
-    content: `You are a helpful assistant. You are here to help answer questions in a friendly way about ${topic}.`
+    content: `You are a helpful assistant. You are here to help answer questions in a friendly, but detailed, way about ${topic}. If the question is not about ${topic}, just give a simple short answer.`
   };
 
   async function about(question: string) {
