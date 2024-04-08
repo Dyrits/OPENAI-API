@@ -56,7 +56,7 @@ const message: HTMLElement = document.getElementById("api-message")!;
 async function generateReport() {
   console.log("Generating report...")
   const data: string[] = await fetchData();
-  const report = await fetchReport(data.join(String()));
+  const report: string = await fetchReport(data.join(String())) as string;
   renderReport(report)
 }
 
@@ -82,7 +82,7 @@ async function fetchData() {
 }
 
 async function fetchReport(data: string) {
-  return await ask.about("Stock Market")("Can you provide a financial advice to know if one should invest or not?", data);
+  return await ask.about("Stock Market")("Given data on share prices over the past 3 days, write a report of no more than 150 words describing the stocks performance and recommending whether to buy, hold or sell.", data);
 }
 
 function renderReport(report: string) {
