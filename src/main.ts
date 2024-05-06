@@ -1,5 +1,6 @@
 import { dates } from "./utilities/dates";
 import { ask } from "./assistant";
+import examples from "./examples.ts";
 
 const { VITE_POLYGON_API_KEY } = import.meta.env;
 
@@ -82,7 +83,9 @@ async function fetchData() {
 }
 
 async function fetchReport(data: string) {
-  return await ask.about("Stock Market")("Given data on share prices over the past 3 days, write a report of no more than 150 words describing the stocks performance and recommending whether to buy, hold or sell.", data);
+  const topic = "Stock Market";
+  const $examples = examples[topic];
+  return await ask.about("Stock Market")("Given data on share prices over the past 3 days, write a report of no more than 150 words describing the stocks performance and recommending whether to buy, hold or sell.", { data, examples: $examples });
 }
 
 function renderReport(report: string) {
