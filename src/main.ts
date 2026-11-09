@@ -44,7 +44,6 @@ function renderTickers(tickers: string[]) {
   });
 }
 
-console.log(import.meta.env);
 
 const panels: { [key: string]: HTMLElement } = {
   loading: document.querySelector(".loading-panel")!,
